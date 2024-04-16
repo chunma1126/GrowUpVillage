@@ -26,7 +26,8 @@ public class BuildingManager : MonoBehaviour
                 newBuilding.transform.Rotate(new Vector3(0 , buildingRotation , 0));
                 
                 Building newBuildingCompo =  newBuilding.GetComponent<Building>();
-                newBuildingCompo.Init(building.buildingRadius , building.prefab , building.npc ,1);
+                
+                newBuildingCompo.Init(building.buildingRadius, building.maxNpc , building.generateTime , transform, building.npc);
                 
             }
         }

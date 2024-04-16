@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class Npc : MonoBehaviour
 {
@@ -17,10 +18,15 @@ public class Npc : MonoBehaviour
     public Animator Animator { get; private set; }
     public NavMeshAgent NavMeshAgent { get; private set; }
 
+    public VillageHall VillageHall { get; private set; }
+
+    [Header("Resources")] 
     public float maxResource;
     public float currentResource;
-
-    public Transform myHouse;
+    
+    [HideInInspector] public Transform myWorkTrm;
+    [HideInInspector] public Transform villageHallTrm;
+    
     
     private void Awake()
     {
@@ -33,22 +39,29 @@ public class Npc : MonoBehaviour
 
     void Start()
     {
-        myHouse = transform.parent;
+        myWorkTrm = transform.parent;
         
         Animator = GetComponentInChildren<Animator>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
-        
+                
         NpcStateMachine.Initialize(IdleState);
+
+        
     }
     void Update()
     {
-        NpcStateMachine.currentState.Update();
+        NpcStateMachine.CurrentState.Update();
     }
 
     public void AnimationEnd()
     {
-        NpcStateMachine.currentState.AnimationTriggerCall();
+        NpcStateMachine.CurrentState.AnimationTriggerCall();
     }
-    
-    
+
+    public void SetVillageHall(Transform villageHall)
+    {
+        this.villageHallTrm = villageHall;
+        VillageHall = villageHallTrm.GetComponent<VillageHall>();
+    }
+        
 }

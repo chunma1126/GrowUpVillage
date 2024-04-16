@@ -11,19 +11,27 @@ public class NpcWorkState : NpcState
     public override void Enter()
     {
         base.Enter();
+        npc.currentResource++;
     }
 
     public override void Update()
     {
         base.Update();
-        
-        if(endTriggerCalled)
+
+        if (endTriggerCalled && npc.currentResource >= npc.maxResource)
+        {
+            stateMachine.ChangeState(npc.MoveState);
+        }
+        else if(endTriggerCalled)
+        {
             stateMachine.ChangeState(npc.IdleState);
-        
+        }
+                
     }
 
     public override void Exit()
     {
         base.Exit();
+       
     }
 }

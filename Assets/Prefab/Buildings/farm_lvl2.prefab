@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 95166212756297782}
   - component: {fileID: 780495332615937871}
   - component: {fileID: -6942084011836493422}
+  - component: {fileID: -2663659781049460390}
   m_Layer: 0
   m_Name: farm_lvl2
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020065613143032}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -121,9 +122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0
   npc: {fileID: 0}
-  prefab: {fileID: 0}
+  villageHall: {fileID: 0}
   maxNpc: 0
   currentNpc: 0
+  generateTime: 0
 --- !u!65 &-6942084011836493422
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -145,3 +147,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.215776, y: 1.7610803, z: 2.9795072}
   m_Center: {x: 0, y: 0.74232984, z: 0.42495322}
+--- !u!208 &-2663659781049460390
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020065613143032}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.25, y: 0.88100004, z: 0.355}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.74200004, z: 1.21}
+  m_TimeToStationary: 0.5

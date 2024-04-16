@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class NpcState
 {
    protected Npc npc { get; private set; }
@@ -7,7 +9,7 @@ public class NpcState
 
    protected bool endTriggerCalled;
    
-   public NpcState(Npc newNpc , NpcStateMachine  newStateMachine , string animBoolName )
+   public NpcState(Npc newNpc  , NpcStateMachine  newStateMachine , string animBoolName )
    {
       npc = newNpc;
       stateMachine = newStateMachine;

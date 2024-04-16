@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NpcIdleState : NpcState
 {
-    
+    private float stateTimer;
     
     public NpcIdleState(Npc newNpc, NpcStateMachine newStateMachine, string animBoolName) : base(newNpc, newStateMachine, animBoolName)
     {
@@ -15,13 +15,17 @@ public class NpcIdleState : NpcState
     {
         base.Enter();
         
+        stateTimer = 0.7f;
     }
 
     public override void Update()
     {
         base.Update();
-
-        if (Vector3.Distance(npc.transform.position , npc.myHouse.position) <= 1.5f)
+        stateTimer -= Time.deltaTime;
+        
+        if(stateTimer >= 0)return;
+                
+        if (Vector3.Distance(npc.transform.position , npc.myWorkTrm.position) <= 1.5f)
         {
             stateMachine.ChangeState(npc.WorkState);
         }

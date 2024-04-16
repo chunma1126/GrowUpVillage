@@ -1,27 +1,31 @@
 ﻿using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Building : MonoBehaviour
 {
     public float radius;
     public GameObject npc;
-    public GameObject prefab;
+    
+    public Transform villageHall;
     
     public int maxNpc;
     public int currentNpc;
+
+    public float generateTime;
     
     private float time;
 
     private List<GameObject> npcsList = new List<GameObject>();
-
-    public void Init(float _radius , GameObject _prefab , GameObject _npc,int _maxNpc)
+    
+    public void Init(float _radius  ,int _maxNpc , float _generateTime ,Transform _villageHall,  GameObject _npc)
     {
+        villageHall = _villageHall;
         radius = _radius;
-        prefab = _prefab;
         npc = _npc;
         maxNpc = _maxNpc;
+        generateTime = _generateTime;
     }
-    
     
     private void OnDrawGizmosSelected()
     {
@@ -33,18 +37,22 @@ public class Building : MonoBehaviour
     {
         time += Time.deltaTime;
         
-        if(npc == null)return;
+        if(npc == null && npcsList.Count >= maxNpc)return;
+        
         GenerationNpc();
-
+        
     }
 
     private void GenerationNpc()
     {
-        if (time > 5 && currentNpc < maxNpc)
+        if (time > generateTime && currentNpc < maxNpc)
         {
             currentNpc++;
             
-            GameObject newNpc = Instantiate(npc, transform);
+            GameObject newNpc = Instantiate(npc, villageHall.position , Quaternion.identity);
+            newNpc.transform.SetParent(transform);
+            
+            newNpc.GetComponent<Npc>().SetVillageHall(villageHall);
             npcsList.Add(newNpc);
             
             time = 0;
