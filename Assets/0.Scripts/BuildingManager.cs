@@ -7,6 +7,9 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float buildingRotation;
     
+    [Header("target")]
+    [SerializeField] private Transform villageTarget;
+    
     void Update()
     {
         _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -16,18 +19,21 @@ public class BuildingManager : MonoBehaviour
             if (Physics.Raycast(_ray , out RaycastHit hit , whatIsGround))
             {
                 Collider[] around = Physics.OverlapSphere(hit.point,building.buildingRadius);
-
+                
                 foreach (var item in around)
                 {
-                    if(item.GetComponent<Building>())
+                    
+                    if (item.GetComponent<Building>())
+                    {
                         return;
+                    }
                 }
                 GameObject newBuilding = Instantiate(building.prefab , hit.point , Quaternion.identity);
                 newBuilding.transform.Rotate(new Vector3(0 , buildingRotation , 0));
                 
                 Building newBuildingCompo =  newBuilding.GetComponent<Building>();
                 
-                newBuildingCompo.Init(building.buildingRadius, building.maxNpc , building.generateTime , transform, building.npc);
+                newBuildingCompo.Init(building.buildingRadius, building.maxNpc , building.generateTime , villageTarget, building.npc);
                 
             }
         }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 95356732721509322}
   - component: {fileID: -4835104637324342274}
   - component: {fileID: -4098107801220363768}
+  - component: {fileID: 350238964122864039}
   m_Layer: 0
   m_Name: fence
   m_TagString: Untagged
@@ -121,9 +122,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0
   npc: {fileID: 0}
-  prefab: {fileID: 0}
+  villageHall: {fileID: 0}
   maxNpc: 0
   currentNpc: 0
+  generateTime: 0
+  ways:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!65 &-4098107801220363768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -145,3 +152,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099999994, y: 0.34999996, z: 1.9378538}
   m_Center: {x: 0, y: 0.17499998, z: -0.000000059604645}
+--- !u!208 &350238964122864039
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147628467784510}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.120000005, y: 0.42000002, z: 2.325}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.42000002, z: 0}
+  m_TimeToStationary: 0.5

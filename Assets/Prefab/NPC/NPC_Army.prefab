@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 334406011908788512}
-  - component: {fileID: 2148278218140113083}
   - component: {fileID: -6247279215391267261}
   - component: {fileID: 4936340491531288035}
+  - component: {fileID: 4911533993517116854}
+  - component: {fileID: -4946405975219744830}
   m_Layer: 7
-  m_Name: NPC
+  m_Name: NPC_Army
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,22 +36,6 @@ Transform:
   - {fileID: 3884425286026844831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2148278218140113083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5840758019616813025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8950e094bc76419459659d2de296d630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxResource: 5
-  currentResource: 0
-  myWorkTrm: {fileID: 0}
-  villageHallTrm: {fileID: 0}
 --- !u!195 &-6247279215391267261
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -96,6 +81,46 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &4911533993517116854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5840758019616813025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c2002510656ca419d0faa95cbfc0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxResource: 1
+  currentResource: 0
+  myWorkTrm: {fileID: 0}
+  villageHallTrm: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
+  whatIsObstacle:
+    serializedVersion: 2
+    m_Bits: 512
+  ways:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  wayIndex: 0
+--- !u!114 &-4946405975219744830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5840758019616813025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1770d43e49f35cb44b7249586f1b0957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3630738349805911412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -169,6 +194,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -7813590141776298306, guid: e6ed95cc60489b5449d8e0843a5d7276,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a3a52d953b2e4ef4ea9baab3618e4b7d, type: 2}
     - target: {fileID: -7657966619581158213, guid: e6ed95cc60489b5449d8e0843a5d7276,
         type: 3}
       propertyPath: m_Layer
@@ -453,6 +483,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5822821947120931875, guid: e6ed95cc60489b5449d8e0843a5d7276,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 63a4beb18bd6c2a499bfbce21cf6200f, type: 2}
     - target: {fileID: 6240733294840144465, guid: e6ed95cc60489b5449d8e0843a5d7276,
         type: 3}
       propertyPath: m_Layer
@@ -532,8 +567,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4513610247094173733}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 384fa5a9ea374c54e8de4db6066016f2, type: 2}
+  m_Avatar: {fileID: 9000000, guid: e6ed95cc60489b5449d8e0843a5d7276, type: 3}
+  m_Controller: {fileID: 22100000, guid: cddbf3edba07ed94090b7471a656e92a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -556,4 +591,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae9b0e852e93c4596a60d287b63eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc: {fileID: 2148278218140113083}
+  npc: {fileID: 4911533993517116854}

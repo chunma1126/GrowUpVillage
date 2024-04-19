@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+
+
+using System.Linq;
 
 public class NpcWorkState : NpcState
 {
@@ -12,26 +12,30 @@ public class NpcWorkState : NpcState
     {
         base.Enter();
         npc.currentResource++;
+                
     }
 
     public override void Update()
     {
         base.Update();
-
-        if (endTriggerCalled && npc.currentResource >= npc.maxResource)
-        {
-            stateMachine.ChangeState(npc.MoveState);
-        }
-        else if(endTriggerCalled)
+        if (endTriggerCalled)
         {
             stateMachine.ChangeState(npc.IdleState);
+            
+            if (npc.maxResource <= npc.currentResource)
+            {
+                npc.target = npc.villageHallTrm;
+                stateMachine.ChangeState(npc.MoveState);
+            }
+            
         }
-                
     }
 
     public override void Exit()
     {
         base.Exit();
+
        
+        
     }
 }

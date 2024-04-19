@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Unity.Mathematics;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Building : MonoBehaviour
@@ -8,7 +8,7 @@ public class Building : MonoBehaviour
     public GameObject npc;
     
     public Transform villageHall;
-    
+        
     public int maxNpc;
     public int currentNpc;
 
@@ -17,6 +17,8 @@ public class Building : MonoBehaviour
     private float time;
 
     private List<GameObject> npcsList = new List<GameObject>();
+
+    //public Transform[] ways = new Transform[4];
     
     public void Init(float _radius  ,int _maxNpc , float _generateTime ,Transform _villageHall,  GameObject _npc)
     {
@@ -31,6 +33,11 @@ public class Building : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position , radius);
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void Update()
@@ -53,6 +60,8 @@ public class Building : MonoBehaviour
             newNpc.transform.SetParent(transform);
             
             newNpc.GetComponent<Npc>().SetVillageHall(villageHall);
+            
+            
             npcsList.Add(newNpc);
             
             time = 0;

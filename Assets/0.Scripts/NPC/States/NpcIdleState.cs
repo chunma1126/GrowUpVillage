@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class NpcIdleState : NpcState
@@ -22,19 +21,24 @@ public class NpcIdleState : NpcState
     {
         base.Update();
         stateTimer -= Time.deltaTime;
-        
         if(stateTimer >= 0)return;
-                
-        if (Vector3.Distance(npc.transform.position , npc.myWorkTrm.position) <= 1.5f)
+
+        if (npc.maxResource <= npc.currentResource)
         {
-            stateMachine.ChangeState(npc.WorkState);
+            npc.currentResource = 0;
+            return; 
+        }
+        else if (npc.GetDistance(npc.transform , npc.workShop) >= npc.interactionRange)
+        {
+            npc.target = npc.workShop;
+            stateMachine.ChangeState(npc.MoveState);   
         }
         else
         {
-            stateMachine.ChangeState(npc.MoveState);
+            stateMachine.ChangeState(npc.WorkState);
         }
         
-        
+                        
     }
 
     public override void Exit()

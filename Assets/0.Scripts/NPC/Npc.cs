@@ -5,30 +5,34 @@ using UnityEngine.Serialization;
 public class Npc : MonoBehaviour
 {
     public NpcStateMachine NpcStateMachine { get; private set; }
-
+    public NpcMovement movement { get; private set; }
     #region States
-
     public NpcIdleState IdleState { get; private set; }
     public NpcMoveState MoveState { get; private set; }
-
     public NpcWorkState WorkState { get; private set; }
 
     #endregion
     
     public Animator Animator { get; private set; }
-    public NavMeshAgent NavMeshAgent { get; private set; }
 
     public VillageHall VillageHall { get; private set; }
 
     [Header("Resources")] 
     public float maxResource;
     public float currentResource;
-    
-    [HideInInspector] public Transform myWorkTrm;
+
+    public bool interacting;
+    public float interactionRange;
+        
+    [HideInInspector] public Transform workShop;
     [HideInInspector] public Transform villageHallTrm;
+
+    public LayerMask whatIsEnemy;
+    public LayerMask whatIsObstacle;
+
+    public Transform target;
     
-    
-    private void Awake()
+    protected virtual void Awake()
     {
         NpcStateMachine = new NpcStateMachine();
         
@@ -37,31 +41,38 @@ public class Npc : MonoBehaviour
         WorkState = new NpcWorkState(this , NpcStateMachine , "Work");
     }
 
-    void Start()
+    protected virtual void Start()
     {
-        myWorkTrm = transform.parent;
-        
+        workShop = transform.parent;
+
+        movement = GetComponent<NpcMovement>();
         Animator = GetComponentInChildren<Animator>();
-        NavMeshAgent = GetComponent<NavMeshAgent>();
-                
+        
         NpcStateMachine.Initialize(IdleState);
 
         
     }
-    void Update()
+    protected virtual void Update()
     {
         NpcStateMachine.CurrentState.Update();
     }
 
-    public void AnimationEnd()
+    public virtual void AnimationEnd()
     {
         NpcStateMachine.CurrentState.AnimationTriggerCall();
     }
 
-    public void SetVillageHall(Transform villageHall)
+    public virtual void SetVillageHall(Transform villageHall)
     {
         this.villageHallTrm = villageHall;
         VillageHall = villageHallTrm.GetComponent<VillageHall>();
     }
-        
+    
+    public float GetDistance(Transform npc , Transform target)
+    {
+        return Vector3.Distance(npc.position , target.position);
+    }
+   
+
+
 }

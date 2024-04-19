@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test_Farm
   m_EditorClassIdentifier: 
   buildingName: Farm
-  buildingRadius: 2
-  maxNpc: 2
+  buildingRadius: 7
+  maxNpc: 1
   generateTime: 3
   prefab: {fileID: 1020065613143032, guid: 2f730ac7abafbbb4a87d4d03cbe47846, type: 3}
-  npc: {fileID: 5840758019616813025, guid: da542ba272a17de4381e2eec6d5b4597, type: 3}
+  npc: {fileID: 5840758019616813025, guid: d698e4fc10158d047a49c7951c67655d, type: 3}
