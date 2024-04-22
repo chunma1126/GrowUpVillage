@@ -25,12 +25,12 @@ public class NpcIdleState : NpcState
 
         if (npc.maxResource <= npc.currentResource)
         {
+            npc.VillageHall.AddResource(npc.currentResource);
             npc.currentResource = 0;
-            return; 
         }
-        else if (npc.GetDistance(npc.transform , npc.workShop) >= npc.interactionRange)
+        else if (npc.GetDistance(npc.transform , npc.workShopTrm) >= npc.interactionRange)
         {
-            npc.target = npc.workShop;
+            npc.target = npc.workShopTrm;
             stateMachine.ChangeState(npc.MoveState);   
         }
         else

@@ -18,7 +18,7 @@ public class Building : MonoBehaviour
 
     private List<GameObject> npcsList = new List<GameObject>();
 
-    //public Transform[] ways = new Transform[4];
+    public Transform target;
     
     public void Init(float _radius  ,int _maxNpc , float _generateTime ,Transform _villageHall,  GameObject _npc)
     {
@@ -60,11 +60,15 @@ public class Building : MonoBehaviour
             newNpc.transform.SetParent(transform);
             
             newNpc.GetComponent<Npc>().SetVillageHall(villageHall);
-            
-            
+            newNpc.GetComponent<Npc>().SetWorkShopTrm(target);
             npcsList.Add(newNpc);
             
             time = 0;
         }
+    }
+
+    public Transform GetTargetTrm()
+    {
+        return target.transform;
     }
 }

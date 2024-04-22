@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Serialization;
+
 
 public class Npc : MonoBehaviour
 {
@@ -21,16 +20,13 @@ public class Npc : MonoBehaviour
     public float maxResource;
     public float currentResource;
 
-    public bool interacting;
     public float interactionRange;
         
-    [HideInInspector] public Transform workShop;
+    [HideInInspector] public Transform workShopTrm;
     [HideInInspector] public Transform villageHallTrm;
 
-    public LayerMask whatIsEnemy;
-    public LayerMask whatIsObstacle;
-
     public Transform target;
+    public GameObject shovel;
     
     protected virtual void Awake()
     {
@@ -43,7 +39,6 @@ public class Npc : MonoBehaviour
 
     protected virtual void Start()
     {
-        workShop = transform.parent;
 
         movement = GetComponent<NpcMovement>();
         Animator = GetComponentInChildren<Animator>();
@@ -65,8 +60,14 @@ public class Npc : MonoBehaviour
     public virtual void SetVillageHall(Transform villageHall)
     {
         this.villageHallTrm = villageHall;
-        VillageHall = villageHallTrm.GetComponent<VillageHall>();
+        VillageHall = villageHallTrm.GetComponentInParent<VillageHall>();
     }
+
+    public virtual void SetWorkShopTrm(Transform workShop)
+    {
+        workShopTrm = workShop;
+    }
+    
     
     public float GetDistance(Transform npc , Transform target)
     {

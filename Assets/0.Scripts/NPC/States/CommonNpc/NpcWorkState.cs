@@ -12,7 +12,7 @@ public class NpcWorkState : NpcState
     {
         base.Enter();
         npc.currentResource++;
-                
+        npc.shovel.SetActive(true);
     }
 
     public override void Update()
@@ -34,8 +34,7 @@ public class NpcWorkState : NpcState
     public override void Exit()
     {
         base.Exit();
-
+        npc.shovel.SetActive(false);
        
-        
     }
 }
