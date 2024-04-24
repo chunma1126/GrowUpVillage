@@ -16,9 +16,10 @@ public class Npc : MonoBehaviour
 
     public VillageHall VillageHall { get; private set; }
 
-    [Header("Resources")] 
-    public float maxResource;
-    public float currentResource;
+    [Header("Resources")]
+    public ResourceType resourceType;
+    public int maxResource;
+    public int currentResource;
 
     public float interactionRange;
         
@@ -27,6 +28,8 @@ public class Npc : MonoBehaviour
 
     public Transform target;
     public GameObject shovel;
+    
+    
     
     protected virtual void Awake()
     {

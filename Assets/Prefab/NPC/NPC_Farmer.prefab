@@ -106,18 +106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8950e094bc76419459659d2de296d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourceType: 2
   maxResource: 3
   currentResource: 0
-  interacting: 0
   interactionRange: 1
   workShopTrm: {fileID: 0}
   villageHallTrm: {fileID: 0}
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 0
-  whatIsObstacle:
-    serializedVersion: 2
-    m_Bits: 0
   target: {fileID: 0}
   shovel: {fileID: 2431701052207470038}
 --- !u!1001 &2430384200024739934

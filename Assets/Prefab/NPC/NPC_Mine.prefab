@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8950e094bc76419459659d2de296d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourceType: 1
   maxResource: 3
   currentResource: 0
   interactionRange: 1
