@@ -16,5 +16,8 @@ MonoBehaviour:
   buildingRadius: 12
   maxNpc: 1
   generateTime: 0
+  needResources:
+  - type: 2
+    amount: 10
   prefab: {fileID: 1270087151159818, guid: 9836dcd00a6903040804e82bf876375f, type: 3}
   npc: {fileID: 5840758019616813025, guid: 70ff20992274bf04595b80fc39b283f1, type: 3}

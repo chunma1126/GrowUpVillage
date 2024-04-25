@@ -45,7 +45,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5840758019616813025}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8950e094bc76419459659d2de296d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourceType: 0
   maxResource: 3
   currentResource: 0
   interactionRange: 1
@@ -124,6 +125,10 @@ PrefabInstance:
     - target: {fileID: 1502709047313800, guid: ac0271417e7765040b946740e0129ad7, type: 3}
       propertyPath: m_Name
       value: shovel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1502709047313800, guid: ac0271417e7765040b946740e0129ad7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1502709047313800, guid: ac0271417e7765040b946740e0129ad7, type: 3}
       propertyPath: m_IsActive

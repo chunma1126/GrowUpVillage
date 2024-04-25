@@ -13,6 +13,7 @@ public class NpcMoveState : NpcState
         base.Enter();
         
         npc.movement.agent.isStopped = false;
+        
         target = npc.target;
     }
 
@@ -29,9 +30,7 @@ public class NpcMoveState : NpcState
     public override void Exit()
     {
         base.Exit();
-
         npc.movement.agent.isStopped = true;
-    }
 
-  
+    }
 }

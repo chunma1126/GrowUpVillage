@@ -13,6 +13,8 @@ public class NpcIdleState : NpcState
     public override void Enter()
     {
         base.Enter();
+        npc.movement.agent.isStopped = true;
+        
         
         stateTimer = 0.7f;
     }
@@ -44,6 +46,6 @@ public class NpcIdleState : NpcState
     public override void Exit()
     {
         base.Exit();
-        
+        npc.movement.agent.isStopped = false;
     }
 }
