@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class Npc : MonoBehaviour
+public class Npc : Agent
 {
     public NpcStateMachine NpcStateMachine { get; private set; }
     public NpcMovement movement { get; private set; }
@@ -55,7 +55,7 @@ public class Npc : MonoBehaviour
         NpcStateMachine.CurrentState.Update();
     }
 
-    public virtual void AnimationEnd()
+    public override void AnimationEnd()
     {
         NpcStateMachine.CurrentState.AnimationTriggerCall();
     }
