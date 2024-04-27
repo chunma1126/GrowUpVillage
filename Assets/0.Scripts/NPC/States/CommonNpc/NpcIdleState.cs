@@ -27,7 +27,7 @@ public class NpcIdleState : NpcState
 
         if (npc.maxResource <= npc.currentResource)
         {
-            npc.VillageHall.AddResource(npc.resourceType ,npc.currentResource);
+            npc.VillageHall.AddResource(npc.buildingType ,npc.currentResource);
             npc.currentResource = 0;
         }
         else if (npc.GetDistance(npc.transform , npc.workShopTrm) >= npc.interactionRange)

@@ -126,16 +126,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0
   npc: {fileID: 0}
-  villageHall: {fileID: 0}
   maxNpc: 0
   currentNpc: 0
   generateTime: 0
   ways:
-  - {fileID: 0}
   - {fileID: 2109431635949026606}
   - {fileID: 4495949412413118404}
   - {fileID: 5611145051048626297}
   - {fileID: 5511559844414244236}
+  villageHall: {fileID: 0}
+  target: {fileID: 0}
 --- !u!65 &-2444798182948062989
 BoxCollider:
   m_ObjectHideFlags: 0

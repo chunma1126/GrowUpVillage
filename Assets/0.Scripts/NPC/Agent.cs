@@ -1,6 +1,18 @@
 using UnityEngine;
 
-public abstract class Agent : MonoBehaviour
+public class Agent : MonoBehaviour
 {
-   public abstract void AnimationEnd();
+  
+   public VillageHall VillageHall { get; private set; }
+   [HideInInspector] public Transform villageHallTrm;
+   public virtual void AnimationEnd()
+   {
+      
+   }
+
+   public virtual void SetVillageHall(Transform villageHall)
+   {
+      this.villageHallTrm = villageHall;
+      VillageHall = villageHallTrm.GetComponentInParent<VillageHall>();
+   }
 }

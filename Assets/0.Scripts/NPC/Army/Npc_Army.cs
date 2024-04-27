@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
@@ -18,7 +19,7 @@ public class Npc_Army : Agent
     
     #endregion
     public Rig leftHandArm;
-    public Transform[] ways;
+    public List<Transform> ways;
     public Transform target;
     public int wayIndex;
     
@@ -83,7 +84,11 @@ public class Npc_Army : Agent
             leftHandArm.weight = currentValue;
             yield return null;
         }
-
         leftHandArm.weight = endValue;
+    }
+
+    public void SetWays(List<Transform> ways)
+    {
+        this.ways = ways;
     }
 }

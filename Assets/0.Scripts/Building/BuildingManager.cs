@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
-using UnityEngine.SubsystemsImplementation;
+
 
 public class BuildingManager : MonoBehaviour
 {
@@ -28,9 +27,6 @@ public class BuildingManager : MonoBehaviour
     void Update()
     {
         _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        //ChangeBuildings();
-
 
         if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() == false)
         {
@@ -69,7 +65,7 @@ public class BuildingManager : MonoBehaviour
         
             
             //ui갱신
-            foreach (ResourceType item in Enum.GetValues(typeof(ResourceType)))
+            foreach (BuildingType item in Enum.GetValues(typeof(BuildingType)))
             {
                 _villageHall.UpdateText(item);
             }
@@ -91,31 +87,9 @@ public class BuildingManager : MonoBehaviour
         return false;
     }
 
-    
+
     public void ChangeBuildings(int index)
     {
-        switch (index)
-        {
-            case 0 : currentBuildings = buildingList[index];
-                break;
-            case 1 : currentBuildings = buildingList[index];
-                break;
-            case 2 :  currentBuildings = buildingList[index];
-                break;
-        }
-        /*if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            currentBuildings = buildingList[0];
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentBuildings = buildingList[1];
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            currentBuildings = buildingList[2];
-        }*/
+        currentBuildings = buildingList[index];
     }
 }

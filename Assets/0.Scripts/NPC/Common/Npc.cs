@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class Npc : Agent
@@ -14,23 +15,20 @@ public class Npc : Agent
     
     public Animator Animator { get; private set; }
 
-    public VillageHall VillageHall { get; private set; }
+    
 
-    [Header("Resources")]
-    public ResourceType resourceType;
+    [FormerlySerializedAs("resourceType")] [Header("Resources")]
+    public BuildingType buildingType;
     public int maxResource;
     public int currentResource;
 
     public float interactionRange;
         
     [HideInInspector] public Transform workShopTrm;
-    [HideInInspector] public Transform villageHallTrm;
 
     public Transform target;
     public GameObject shovel;
-    
-    
-    
+        
     protected virtual void Awake()
     {
         NpcStateMachine = new NpcStateMachine();
@@ -60,11 +58,7 @@ public class Npc : Agent
         NpcStateMachine.CurrentState.AnimationTriggerCall();
     }
 
-    public virtual void SetVillageHall(Transform villageHall)
-    {
-        this.villageHallTrm = villageHall;
-        VillageHall = villageHallTrm.GetComponentInParent<VillageHall>();
-    }
+    
 
     public virtual void SetWorkShopTrm(Transform workShop)
     {

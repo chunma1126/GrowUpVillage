@@ -40,7 +40,7 @@ public class Npc_ArmyIdleState : Npc_ArmyState
         }
         else
         {
-            int targetWaysIndex = Npc.wayIndex % Npc.ways.Length;
+            int targetWaysIndex = Npc.wayIndex % Npc.ways.Count;
             
             Npc.target = Npc.ways[targetWaysIndex];
             StateMachine.ChangeState(Npc.MoveState);
