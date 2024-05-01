@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,7 +18,7 @@ public class BuildingManager : MonoBehaviour
         
     [Header("target")]
     [SerializeField] private Transform villageTarget;
-
+    
     private void Start()
     {
         currentBuildings = buildingList.First();
@@ -59,7 +60,7 @@ public class BuildingManager : MonoBehaviour
             newBuilding.transform.Rotate(new Vector3(0, buildingRotation, 0));
 
             Building newBuildingCompo = newBuilding.GetComponent<Building>();
-
+            
             newBuildingCompo.Init(currentBuildings.buildingRadius, currentBuildings.maxNpc, currentBuildings.generateTime,
                 villageTarget, currentBuildings.npc);
         

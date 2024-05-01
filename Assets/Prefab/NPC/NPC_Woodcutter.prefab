@@ -73,7 +73,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -106,12 +106,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8950e094bc76419459659d2de296d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceType: 0
+  villageHallTrm: {fileID: 0}
+  buildingType: 2
   maxResource: 3
   currentResource: 0
-  interactionRange: 1
+  workSpeed: 0
+  runSpeed: 7
+  walkSpeed: 3
   workShopTrm: {fileID: 0}
-  villageHallTrm: {fileID: 0}
+  interactionRange: 1
   target: {fileID: 0}
   shovel: {fileID: 2431701052207470038}
 --- !u!1001 &2430384200024739934

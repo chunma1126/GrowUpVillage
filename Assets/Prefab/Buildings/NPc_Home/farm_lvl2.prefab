@@ -125,10 +125,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0
   npc: {fileID: 0}
-  villageHall: {fileID: 0}
   maxNpc: 0
   currentNpc: 0
   generateTime: 0
+  ways: []
+  villageHall: {fileID: 0}
   target: {fileID: 393667187363889095}
 --- !u!208 &-2663659781049460390
 NavMeshObstacle:
@@ -140,10 +141,10 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 1.815, y: 2.1130002, z: 1.82}
+  m_Extents: {x: 1.95, y: 2.1130002, z: 1.82}
   m_MoveThreshold: 0.1
   m_Carve: 1
-  m_CarveOnlyStationary: 1
+  m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 1.7820001, z: 2.85}
   m_TimeToStationary: 0.5
 --- !u!65 &2592078998350411696

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DG.Tweening;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Building : MonoBehaviour
 {
     public float radius;
     public GameObject npc;
-    
-  
-        
+                
     public int maxNpc;
     public int currentNpc;
 
@@ -35,8 +31,14 @@ public class Building : MonoBehaviour
 
     private void OnEnable()
     {
-        transform.localScale = Vector3.zero;
-        transform.DOScale(Vector3.one , 0.4f).SetEase(Ease.OutBack);
+        //시바 오류생김..
+        //transform.localScale = Vector3.zero;
+        //transform.DOScale(Vector3.one , 0.4f).SetEase(Ease.OutBack);
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void OnDrawGizmosSelected()
@@ -51,7 +53,6 @@ public class Building : MonoBehaviour
         if(npc == null && npcsList.Count >= maxNpc)return;
         
         GenerationNpc();
-        
     }
 
     private void GenerationNpc()

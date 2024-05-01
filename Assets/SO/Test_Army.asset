@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingName: Armys
   buildingRadius: 5
   maxNpc: 1
-  generateTime: 0
+  generateTime: 1
   needResources: []
   prefab: {fileID: 1058440869475206, guid: 5a0564be916f44248bc20e6c25a796ce, type: 3}
   npc: {fileID: 5840758019616813025, guid: da542ba272a17de4381e2eec6d5b4597, type: 3}

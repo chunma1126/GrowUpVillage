@@ -32,6 +32,8 @@ public class Npc_Army : Agent
     public float attackDamage;
     
     
+    
+    
     private void Awake()
     {
         ArmyStateMachine = new Npc_ArmyStateMachine();

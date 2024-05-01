@@ -12,23 +12,42 @@ public enum BuildingType
     Army
 }
 
+[Serializable]
+public class VillageHallStat
+{
+    public float happy;
+    public float loyalty;
+    public float technology;
+    public float culture;
+}
+
 public class VillageHall : MonoBehaviour
 {
+    public VillageHallStat stat;
     public float currentResource;
-
     private BuildingManager _buildingManager;
-    
+        
     public Dictionary<BuildingType, int> _resourceDictionary { get; private set; }
-
+    
+    [Header("Resources")]
     [SerializeField] private TextMeshProUGUI woodText;
     [SerializeField] private TextMeshProUGUI rockText;
     [SerializeField] private TextMeshProUGUI foodText;
-
+    
+    [Header("Stat")]
+    [SerializeField] private TextMeshProUGUI happyText;
+    [SerializeField] private TextMeshProUGUI loyaltyText;
+    [SerializeField] private TextMeshProUGUI technologyText;
+    [SerializeField] private TextMeshProUGUI cultureText;
+    
     [SerializeField] private Transform icons;
     [SerializeField] private GameObject buildingIconPrefab;
 
+    [SerializeField] private List<Npc> nightNpcs;
+    
     private void Start()
     {
+        nightNpcs = new List<Npc>();
         _resourceDictionary = new Dictionary<BuildingType, int>();
         _buildingManager = GetComponent<BuildingManager>();
         
@@ -36,8 +55,7 @@ public class VillageHall : MonoBehaviour
         {
             _resourceDictionary.Add(item, 0);
         }
-
-
+        
         int index = 0;
         foreach (BuildingType item in Enum.GetValues(typeof(BuildingType)))
         {
@@ -52,6 +70,19 @@ public class VillageHall : MonoBehaviour
             index++;
         }
 
+        UpdateStat();
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.IsNight() == false && nightNpcs.Count > 0)
+        {
+            foreach (var item in nightNpcs)
+            {
+                item.gameObject.SetActive(true);
+                nightNpcs.Remove(item);
+            }
+        }
     }
 
     public void AddResource(BuildingType type,int amount)
@@ -76,4 +107,19 @@ public class VillageHall : MonoBehaviour
                 break;
         }
     }
+
+
+    public void UpdateStat()
+    {
+        happyText.SetText(stat.happy.ToString());
+        loyaltyText.SetText(stat.loyalty.ToString());
+        technologyText .SetText(stat.technology.ToString());
+        cultureText.SetText(stat.culture.ToString());
+    }
+
+    public void AddNpcInNight(Npc newNpc)
+    {
+        nightNpcs.Add(newNpc);
+    }
+    
 }

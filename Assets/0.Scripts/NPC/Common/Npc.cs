@@ -6,25 +6,30 @@ public class Npc : Agent
 {
     public NpcStateMachine NpcStateMachine { get; private set; }
     public NpcMovement movement { get; private set; }
+    
     #region States
     public NpcIdleState IdleState { get; private set; }
     public NpcMoveState MoveState { get; private set; }
     public NpcWorkState WorkState { get; private set; }
+    public NpcDanceState DanceState { get; private set; }
 
     #endregion
     
     public Animator Animator { get; private set; }
-
-    
-
-    [FormerlySerializedAs("resourceType")] [Header("Resources")]
+        
+    [Header("ResourcesValue")]
     public BuildingType buildingType;
     public int maxResource;
     public int currentResource;
 
-    public float interactionRange;
-        
+    [Header("NpcValue")] 
+    public float workSpeed;
+    public float runSpeed;
+    public float walkSpeed;
+    public float runRadius = 10;
+    
     [HideInInspector] public Transform workShopTrm;
+    public float interactionRange;
 
     public Transform target;
     public GameObject shovel;
@@ -36,8 +41,9 @@ public class Npc : Agent
         IdleState = new NpcIdleState(this , NpcStateMachine , "Idle");
         MoveState = new NpcMoveState(this , NpcStateMachine , "Move");
         WorkState = new NpcWorkState(this , NpcStateMachine , "Work");
+        DanceState = new NpcDanceState(this , NpcStateMachine , "Dance");
     }
-
+    
     protected virtual void Start()
     {
 
@@ -45,7 +51,7 @@ public class Npc : Agent
         Animator = GetComponentInChildren<Animator>();
         
         NpcStateMachine.Initialize(IdleState);
-
+                
         
     }
     protected virtual void Update()
@@ -57,8 +63,6 @@ public class Npc : Agent
     {
         NpcStateMachine.CurrentState.AnimationTriggerCall();
     }
-
-    
 
     public virtual void SetWorkShopTrm(Transform workShop)
     {

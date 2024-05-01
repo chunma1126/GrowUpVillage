@@ -17,9 +17,7 @@ MonoBehaviour:
   maxNpc: 1
   generateTime: 0
   needResources:
-  - type: 1
-    amount: 20
-  - type: 2
+  - type: 0
     amount: 10
   prefab: {fileID: 1315104023788104, guid: 122b0584add6e9641b3a798f66fa32a4, type: 3}
   npc: {fileID: 5840758019616813025, guid: 468203eeb6589074bbfc7304867caee5, type: 3}

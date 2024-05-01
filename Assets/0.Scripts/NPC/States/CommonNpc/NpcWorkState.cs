@@ -1,11 +1,12 @@
-
-
-using System.Linq;
+using System.Collections;
+using UnityEngine;
 
 public class NpcWorkState : NpcState
 {
+    
     public NpcWorkState(Npc newNpc, NpcStateMachine newStateMachine, string animBoolName) : base(newNpc, newStateMachine, animBoolName)
     {
+        
     }
 
     public override void Enter()
@@ -13,6 +14,22 @@ public class NpcWorkState : NpcState
         base.Enter();
         npc.currentResource++;
         npc.shovel.SetActive(true);
+        
+        float happyStat =  npc.VillageHall.stat.happy/10;
+        
+        
+        if (Random.Range(0,100) <= happyStat)
+        {
+           stateMachine.ChangeState(npc.DanceState);
+        }
+        else
+        {
+            npc.workSpeed = npc.VillageHall.stat.happy;
+            npc.Animator.speed = npc.workSpeed;
+        }
+        
+        npc.workSpeed = npc.VillageHall.stat.happy;
+        npc.Animator.speed = npc.workSpeed;
     }
 
     public override void Update()
@@ -27,7 +44,6 @@ public class NpcWorkState : NpcState
                 npc.target = npc.villageHallTrm;
                 stateMachine.ChangeState(npc.MoveState);
             }
-            
         }
     }
 
@@ -35,6 +51,7 @@ public class NpcWorkState : NpcState
     {
         base.Exit();
         npc.shovel.SetActive(false);
-       
+        npc.Animator.speed = 1;
     }
+
 }

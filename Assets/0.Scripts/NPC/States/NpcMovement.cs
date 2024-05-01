@@ -15,4 +15,9 @@ public class NpcMovement : MonoBehaviour
    {
       agent.SetDestination(newTarget.position);
    }
+
+   public void SetSpeed(float speed)
+   {
+      agent.speed = speed;
+   }
 }

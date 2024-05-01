@@ -13,9 +13,24 @@ public class NpcIdleState : NpcState
     public override void Enter()
     {
         base.Enter();
+        
+        if(GameManager.Instance.IsNight())
+        {
+            npc.target = npc.villageHallTrm;
+            
+            if (npc.GetDistance(npc.transform, npc.target) <= 1.2f)
+            {
+                npc.VillageHall.AddNpcInNight(npc);
+                npc.gameObject.SetActive(false);
+            }
+            else
+            {
+                stateMachine.ChangeState(npc.MoveState);    
+            }
+            return;
+        }
+        
         npc.movement.agent.isStopped = true;
-        
-        
         stateTimer = 0.7f;
     }
 
@@ -24,7 +39,7 @@ public class NpcIdleState : NpcState
         base.Update();
         stateTimer -= Time.deltaTime;
         if(stateTimer >= 0)return;
-
+        
         if (npc.maxResource <= npc.currentResource)
         {
             npc.VillageHall.AddResource(npc.buildingType ,npc.currentResource);
@@ -39,8 +54,6 @@ public class NpcIdleState : NpcState
         {
             stateMachine.ChangeState(npc.WorkState);
         }
-        
-                        
     }
 
     public override void Exit()
