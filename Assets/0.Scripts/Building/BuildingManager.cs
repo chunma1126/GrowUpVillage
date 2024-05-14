@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -57,8 +56,9 @@ public class BuildingManager : MonoBehaviour
         if (currentBuildings.CanInstall(_villageHall._resourceDictionary))
         {
             GameObject newBuilding = Instantiate(currentBuildings.prefab, hit.point, Quaternion.identity);
-            newBuilding.transform.Rotate(new Vector3(0, buildingRotation, 0));
-
+         
+            newBuilding.transform.Rotate(new Vector3(newBuilding.transform.rotation.x, buildingRotation, newBuilding.transform.rotation.z));
+        
             Building newBuildingCompo = newBuilding.GetComponent<Building>();
             
             newBuildingCompo.Init(currentBuildings.buildingRadius, currentBuildings.maxNpc, currentBuildings.generateTime,

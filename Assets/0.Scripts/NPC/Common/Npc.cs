@@ -32,7 +32,7 @@ public class Npc : Agent
     public float interactionRange;
 
     public Transform target;
-    public GameObject shovel;
+    public GameObject workItem;
         
     protected virtual void Awake()
     {

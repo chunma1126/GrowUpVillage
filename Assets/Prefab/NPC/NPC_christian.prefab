@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -484062833076232313}
   - component: {fileID: 9208944731748393473}
   m_Layer: 7
-  m_Name: NPC_Farmer
+  m_Name: NPC_christian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   workShopTrm: {fileID: 0}
   interactionRange: 1
   target: {fileID: 0}
-  workItem: {fileID: 2431701052207470038}
+  shovel: {fileID: 2431701052207470038}
 --- !u!1001 &2430384200024739934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -268,6 +268,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -7813590141776298306, guid: e6ed95cc60489b5449d8e0843a5d7276,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 082a730af48934a41aff838003f1ad02, type: 2}
     - target: {fileID: -7657966619581158213, guid: e6ed95cc60489b5449d8e0843a5d7276,
         type: 3}
       propertyPath: m_Layer
@@ -552,6 +557,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5822821947120931875, guid: e6ed95cc60489b5449d8e0843a5d7276,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 19a723ea8afbd194f9457b1c9b6c6cf3, type: 2}
     - target: {fileID: 6240733294840144465, guid: e6ed95cc60489b5449d8e0843a5d7276,
         type: 3}
       propertyPath: m_Layer
@@ -642,7 +652,7 @@ Animator:
   m_GameObject: {fileID: 4513610247094173733}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e6ed95cc60489b5449d8e0843a5d7276, type: 3}
-  m_Controller: {fileID: 9100000, guid: 384fa5a9ea374c54e8de4db6066016f2, type: 2}
+  m_Controller: {fileID: 22100000, guid: 16774e58ea9081945be38f92f8910097, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -9,7 +9,8 @@ public enum BuildingType
     Food,
     Rock,
     Wood,
-    Army
+    Army,
+    Church
 }
 
 [Serializable]

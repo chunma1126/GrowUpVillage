@@ -13,7 +13,9 @@ public class NpcWorkState : NpcState
     {
         base.Enter();
         npc.currentResource++;
-        npc.shovel.SetActive(true);
+        
+        if(npc.workItem != null)
+            npc.workItem.SetActive(true);
         
         float happyStat =  npc.VillageHall.stat.happy/10;
         
@@ -50,7 +52,10 @@ public class NpcWorkState : NpcState
     public override void Exit()
     {
         base.Exit();
-        npc.shovel.SetActive(false);
+        
+        if(npc.workItem != null)
+            npc.workItem.SetActive(false);
+        
         npc.Animator.speed = 1;
     }
 
